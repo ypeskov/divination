@@ -6,7 +6,7 @@
         <p>Виды гаданий</p>
         <ul>
             {% for divination in divinations %}
-            <li><a href="">{{ divination.title }}</a></li>
+            <li><a href="divination/{{divination.order}}">{{ divination.title }}</a></li>
             {% endfor %}
         </ul>
     </h1>
