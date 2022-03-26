@@ -1,3 +1,24 @@
-p {
-    background-color: aqua;
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+.wrapper {
+    width: 80vw;
+    margin: auto;
+}
+
+header {
+    background-color: #eee;
+    padding: 1rem;
+}
+
+main {
+    background-color: rgb(149, 174, 180);
+    padding: 1rem;
+}
+
+.main-content {
+    padding: 1rem;
 }

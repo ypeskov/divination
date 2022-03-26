@@ -1,5 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block main_content %}
-    <p>++++</p>
+<section class="main-content">
+    <h1>
+        <p>Виды гаданий</p>
+        <ul>
+            {% for divination in divinations %}
+            <li><a href="">{{ divination.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </h1>
+</section>
 {% endblock main_content %}

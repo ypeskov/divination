@@ -1,5 +1,7 @@
 {
     "pylint.args": [
-        "--disable=C0116,C0114,C0115"
+        "--disable=C0116,C0114,C0115",
+        "--load-plugins=pylint_django",
+        "--django-settings-module=divination.settings"
     ]
 }

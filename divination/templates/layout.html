@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="{% static '/css/styles.css' %}">
 </head>
 <body>
-    {% block main_content %}{% endblock  %}
+    <div class="wrapper">
+        <header>
+            <h1>Гадания на Рунах</h1>
+        </header>
+        <main>
+        {% block main_content %}{% endblock  %}
+        </main>
+    </div>
 </body>
 </html>
