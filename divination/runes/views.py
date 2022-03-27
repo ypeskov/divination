@@ -44,7 +44,7 @@ def one_rune_divination_answer(request):
 
     divination_type = 'Гадание на одной руне'
     rune_order = random.randint(1, 24)
-    rune = Rune.objects.get(order=4)
+    rune = Rune.objects.get(order=rune_order)
 
     forecast = rune.forecast_meaning_direct
     is_inverted_str = 'Прямое положение'
