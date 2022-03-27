@@ -12,6 +12,13 @@
         <p class="divination_description">
             {{divination.description}}
         </p>
+        <p>
+            <form action="/divination/answer/" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Спросить">
+            </form>
+        </p>
     </article>
 </section>
 {% endblock main_content %}

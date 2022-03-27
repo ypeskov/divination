@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from runes.models import Divination, Rune
+from runes.models import Divination, Rune, Question
 
 
 # admin.site.register(Author, AuthorAdmin)
@@ -14,3 +14,12 @@ class DivinationAdmin(admin.ModelAdmin):
 class RuneAdmin(admin.ModelAdmin):
     list_display = ('order', 'title' )
     ordering = ('order',)
+
+    class Media:
+        css = {
+            'all': ('runes/admin.css',)
+        }
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    pass

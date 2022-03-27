@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block app_styles %}
+    <link rel="stylesheet" href="{% static 'runes/css/runes.css' %}">
+{% endblock app_styles %}
+
+{% block main_content %}
+<section class="main-content">
+    <article class="divination_article">
+        <h2>Ответ рун на ваш вопрос</h2>
+        <p>Руна: {{answer.rune}}</p>
+        <p>Положение: {{answer.is_inverted}}</p>
+        <p>{{answer.forecast}}</p>
+    </article>
+</section>
+{% endblock main_content %}
