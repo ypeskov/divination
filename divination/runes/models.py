@@ -1,11 +1,12 @@
-from ipaddress import ip_address
 from django.db import models
+
+from tinymce.models import HTMLField
 
 
 class Divination(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
     order = models.PositiveIntegerField(unique=True, null=True)
+    description = HTMLField(blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -17,9 +18,9 @@ class Divination(models.Model):
 class Rune(models.Model):
     order = models.PositiveIntegerField(unique=True)
     title = models.CharField(max_length=30)
-    description = models.TextField(blank=True)
-    forecast_meaning_direct = models.TextField(blank=True)
-    forecast_meaning_inverted = models.TextField(blank=True)
+    description = HTMLField(blank=True)
+    forecast_meaning_direct = HTMLField(blank=True)
+    forecast_meaning_inverted = HTMLField(blank=True)
     has_inverted = models.BooleanField()
     img_direct = models.URLField(null=True, blank=True)
     img_inverted = models.URLField(null=True, blank=True)

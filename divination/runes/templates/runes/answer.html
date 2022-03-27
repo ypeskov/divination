@@ -7,15 +7,20 @@
 
 {% block main_content %}
 <section class="main-content">
-    <article class="divination_article">
-        <h2>Ответ рун на ваш вопрос</h2>
-        <p>Руна: {{answer.rune.title}}</p>
-        <p>Положение: {{answer.is_inverted}}</p>
-        <div>
-            <h3>Общее описание руны</h3>
-            <p>{{answer.rune.description}}</p>
+    <article class="divination-article">
+        <h2>{{forecast_type}}</h2>
+        <div class="rune-details">
+            <p><b>Руна:</b> {{answer.rune.title}}</p>
+            <p><b>Положение:</b> {{answer.is_inverted}}</p>
         </div>
-        <p>{{answer.forecast}}</p>
+        <div class="rune-general-description">
+            <h3>Общее описание руны</h3>
+            <p>{{answer.rune.description|safe}}</p>
+        </div>
+        <div class="rune-forecast">
+            <h3>Ответ рун</h3>
+            <p>{{answer.forecast|safe}}</p>
+        </div>
     </article>
 </section>
 {% endblock main_content %}

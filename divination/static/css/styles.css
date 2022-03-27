@@ -15,10 +15,10 @@ header {
 }
 
 main {
-    background-color: rgb(149, 174, 180);
+    background-color: rgb(211, 230, 234);;
     padding: 1rem;
 }
 
 .main-content {
-    padding: 1rem;
+    padding: 0;
 }
