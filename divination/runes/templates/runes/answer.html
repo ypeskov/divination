@@ -9,8 +9,12 @@
 <section class="main-content">
     <article class="divination_article">
         <h2>Ответ рун на ваш вопрос</h2>
-        <p>Руна: {{answer.rune}}</p>
+        <p>Руна: {{answer.rune.title}}</p>
         <p>Положение: {{answer.is_inverted}}</p>
+        <div>
+            <h3>Общее описание руны</h3>
+            <p>{{answer.rune.description}}</p>
+        </div>
         <p>{{answer.forecast}}</p>
     </article>
 </section>
