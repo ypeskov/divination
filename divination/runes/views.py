@@ -22,27 +22,27 @@ def divination_answer(request):
     referer = request.headers.get('Referer', '')
     origin = request.headers.get('Origin', '')
 
-    answer, rune, is_inverted, divination_type = one_rune_divination_answer(
+    answer, forecast_type = one_rune_divination_answer(
         request)
 
     question = Question(question=question, referer=referer, origin=origin)
     question.answer = {
-        'forecast_type': divination_type,
-        'rune': rune.title,
-        'is_inverted': is_inverted,
+        'forecast_type': forecast_type,
+        'rune': answer['rune'].title,
+        'is_inverted': answer['is_inverted_str'],
     }
     question.save()
 
     return render(request, 'runes/answer.html', {
         'answer': answer,
-        'forecast_type': divination_type
+        'forecast_type': forecast_type
     })
 
 
 def one_rune_divination_answer(request):
     random.seed()
 
-    divination_type = 'Гадание на одной руне'
+    forecast_type = 'Гадание на одной руне'
     rune_order = random.randint(1, 5)
     rune = Rune.objects.get(order=rune_order)
 
@@ -57,8 +57,8 @@ def one_rune_divination_answer(request):
 
     answer = {
         'rune': rune,
-        'is_inverted': is_inverted_str,
+        'is_inverted_str': is_inverted_str,
         'forecast': forecast,
     }
 
-    return answer, rune, is_inverted, divination_type
+    return answer, forecast_type
