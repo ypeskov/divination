@@ -20,11 +20,15 @@ def divination_answer(request):
     question = request.POST['question']
     referer = request.headers.get('Referer', '')
     origin = request.headers.get('Origin', '')
-    
-    question = Question(question=question, referer=referer, origin=origin)
-    question.save()
 
-    answer = one_rune_divination_answer(request)
+    answer, rune, is_inverted = one_rune_divination_answer(request)
+
+    question = Question(question=question, referer=referer, origin=origin)
+    question.answer = {
+        'rune': rune.title,
+        'is_inverted': is_inverted
+    }
+    question.save()
 
     return render(request, 'runes/answer.html', {
         'answer': answer,
@@ -44,11 +48,11 @@ def one_rune_divination_answer(request):
         if is_inverted == 1:
             is_inverted_str = 'Перевернутое положение'
             forecast = rune.forecast_meaning_inverted
-    
+
     answer = {
         'rune': rune.title,
         'is_inverted': is_inverted_str,
         'forecast': forecast,
     }
 
-    return answer
+    return answer, rune, is_inverted
