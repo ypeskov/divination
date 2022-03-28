@@ -43,7 +43,7 @@ def one_rune_divination_answer(request):
     random.seed()
 
     forecast_type = 'Гадание на одной руне'
-    rune_order = random.randint(1, 5)
+    rune_order = random.randint(1, 10)
     rune = Rune.objects.get(order=rune_order)
 
     forecast = rune.forecast_meaning_direct

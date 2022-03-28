@@ -1,0 +1,7 @@
+.column-order {
+    width: 10%;
+}
+
+.field-locale input, .field-title input {
+    width: 75%;
+}
