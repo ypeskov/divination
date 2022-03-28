@@ -14,7 +14,7 @@ class DivinationAdmin(admin.ModelAdmin):
 class RuneTranslationAdmin(admin.ModelAdmin):
     pass
 
-class RuneTranslationInLine(admin.TabularInline):
+class RuneTranslationInLine(admin.StackedInline):
   model = RuneTranslation
   extra = 0
 

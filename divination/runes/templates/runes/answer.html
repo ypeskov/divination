@@ -10,12 +10,12 @@
     <article class="divination-article">
         <h2>{{forecast_type}}</h2>
         <div class="rune-details">
-            <p><b>Руна:</b> {{answer.rune.title}}</p>
+            <p><b>Руна:</b> {{answer.title}}</p>
             <p><b>Положение:</b> {{answer.is_inverted_str}}</p>
         </div>
         <div class="rune-general-description">
             <h3>Общее описание руны</h3>
-            <p>{{answer.rune.description|safe}}</p>
+            <p>{{answer.description|safe}}</p>
         </div>
         <div class="rune-forecast">
             <h3>Ответ рун</h3>

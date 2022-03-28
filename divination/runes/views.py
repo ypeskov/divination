@@ -41,22 +41,26 @@ def divination_answer(request):
 
 def one_rune_divination_answer(request):
     random.seed()
+    locale = 'ru_ua'
 
     forecast_type = 'Гадание на одной руне'
     rune_order = random.randint(1, 10)
     rune = Rune.objects.get(order=rune_order)
 
-    forecast = rune.forecast_meaning_direct
+    translation = rune.runetranslation_set.get(locale=locale)
+    forecast = translation.forecast_meaning_direct
     is_inverted_str = 'Прямое положение'
     is_inverted = 0
     if rune.has_inverted:
         is_inverted = random.randint(0, 1)
         if is_inverted == 1:
             is_inverted_str = 'Перевернутое положение'
-            forecast = rune.forecast_meaning_inverted
+            forecast = translation.forecast_meaning_inverted
 
     answer = {
         'rune': rune,
+        'title': translation.title,
+        'description': translation.description,
         'is_inverted_str': is_inverted_str,
         'forecast': forecast,
     }
