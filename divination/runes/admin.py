@@ -20,14 +20,15 @@ class RuneTranslationInLine(admin.StackedInline):
 
 @admin.register(Rune)
 class RuneAdmin(admin.ModelAdmin):
-    list_display = ('order', 'runetranslation_display')
+    list_display = ('order', 'title', 'runetranslation_display')
+    list_display_links = ('title', 'order', 'runetranslation_display')
     ordering = ('order',)
 
     inlines = [RuneTranslationInLine]
 
     def runetranslation_display(self, obj):
         return ", ".join([
-            f"{rt.title} - {rt.locale} " for rt in obj.runetranslation_set.all()
+            f"{rt.locale} " for rt in obj.runetranslation_set.all()
         ])
     runetranslation_display.short_description = "Translations"
 
