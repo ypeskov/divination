@@ -44,7 +44,7 @@ def one_rune_divination_answer(request):
     locale = 'ru_ua'
 
     forecast_type = 'Гадание на одной руне'
-    rune_order = random.randint(1, 15)
+    rune_order = random.randint(1, 24)
     rune = Rune.objects.get(order=rune_order)
 
     translation = rune.runetranslation_set.get(locale=locale)
