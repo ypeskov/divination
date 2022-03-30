@@ -193,5 +193,122 @@
       "created_at": "2022-03-27T11:20:30+03:00",
       "updated_at": "2022-03-27T11:20:30+03:00"
     }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 16,
+    "fields": {
+      "order": 16,
+      "title": "Sowilo",
+      "has_inverted": false,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 17,
+    "fields": {
+      "order": 17,
+      "title": "Tiwaz",
+      "has_inverted": true,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 18,
+    "fields": {
+      "order": 18,
+      "title": "Berkana",
+      "has_inverted": true,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 19,
+    "fields": {
+      "order": 19,
+      "title": "Ehwaz",
+      "has_inverted": true,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 20,
+    "fields": {
+      "order": 20,
+      "title": "Mannaz",
+      "has_inverted": true,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 21,
+    "fields": {
+      "order": 21,
+      "title": "Laguz",
+      "has_inverted": true,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 22,
+    "fields": {
+      "order": 22,
+      "title": "Inguz",
+      "has_inverted": false,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 23,
+    "fields": {
+      "order": 23,
+      "title": "Othala",
+      "has_inverted": true,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
+  },
+  {
+    "model": "runes.Rune",
+    "pk": 24,
+    "fields": {
+      "order": 24,
+      "title": "Dagaz",
+      "has_inverted": false,
+      "img_direct": "",
+      "img_inverted": "",
+      "created_at": "2022-03-27T11:20:30+03:00",
+      "updated_at": "2022-03-27T11:20:30+03:00"
+    }
   }
 ]
