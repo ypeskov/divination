@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
+{% load i18n %}
 
 {% block main_content %}
 <section class="main-content">
     <h1>
-        <p>Виды гаданий</p>
+        <p>{% trans "Types of forecasts" %}</p>
+
         <ul>
             {% for divination in divinations %}
             <li><a href="divination/{{divination.order}}">{{ divination.title }}</a></li>
