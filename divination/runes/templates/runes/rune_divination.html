@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block app_styles %}
     <link rel="stylesheet" href="{% static 'runes/css/runes.css' %}">
@@ -8,17 +9,17 @@
 {% block main_content %}
 <section class="main-content">
     <article class="divination_article">
-        <h2>{{divination.title}}</h2>
+        <h2>{% trans divination.title %}</h2>
         <p class="divination_description">
-            {{divination.description}}
+            {% trans divination.description %}
         </p>
-        <p>
-            <form action="/divination/answer/" method="post">
+        <div class="question-form">
+            <form action="{% url 'runes:forecast_answer' divination_id %}" method="post">
                 {% csrf_token %}
                 {{ form }}
-                <input type="submit" value="Спросить">
+                <input type="submit" value="{% trans 'ask' %}">
             </form>
-        </p>
+        </div>
     </article>
 </section>
 {% endblock main_content %}

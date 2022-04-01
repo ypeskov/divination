@@ -1,6 +1,8 @@
 import random
 
 from django.shortcuts import render
+from django.http import Http404
+from django.utils.translation import gettext as _
 
 from runes.models import Divination, Question, Rune
 from runes.forms import QuestionForm
@@ -14,16 +16,23 @@ def one_rune_divination_question(request, divination_id):
     return render(request, 'runes/rune_divination.html', {
         'divination': divination,
         'form': form,
+        'divination_id': divination_id,
     })
 
 
-def divination_answer(request):
+def divination_answer(request, divination_id):
     question = request.POST['question']
     referer = request.headers.get('Referer', '')
     origin = request.headers.get('Origin', '')
 
-    answer, forecast_type = one_rune_divination_answer(
-        request)
+    if divination_id == 1:
+        answer, forecast_type = one_rune_divination_answer(request)
+    elif divination_id == 2:
+        pass
+    elif divination_id == 3:
+        pass
+    else:
+        raise Http404(_('Forecast not found'))
 
     question = Question(question=question, referer=referer, origin=origin)
     question.answer = {
@@ -31,6 +40,7 @@ def divination_answer(request):
         'rune': answer['rune'].title,
         'is_inverted': answer['is_inverted_str'],
     }
+
     question.save()
 
     return render(request, 'runes/answer.html', {

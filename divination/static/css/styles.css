@@ -22,3 +22,46 @@ main {
 .main-content {
     padding: 0;
 }
+
+.divination-article h2 {
+    font-size: 1.6rem;
+    margin-top: 0;
+}
+
+.rune-forecast, .rune-general-description, .rune-details,
+.divination_description, .question-form {
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.rune-general-description, .divination_description {
+    background-color: rgb(199, 197, 197);
+    margin-top: 10px;
+}
+
+.divination_description {
+    min-height: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.rune-general-description h3, .rune-forecast h3 {
+    text-decoration: underline;
+    margin-top: 0;
+}
+
+.rune-details {
+    background-color: rgb(199, 197, 197);
+}
+
+.rune-forecast, .question-form {
+    background-color: rgb(240, 224, 207);
+    margin-top: 10px;
+}
+
+.question-form {
+    top: auto;
+    min-height: 5rem;
+    display: flex;
+    align-items: center;
+}
