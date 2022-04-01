@@ -35,16 +35,16 @@ def divination_answer(request, divination_id):
         raise Http404(_('Forecast not found'))
 
     question = Question(question=question, referer=referer, origin=origin)
-    question.answer = {
-        'forecast_type': forecast_type,
-        'rune': answer['rune'].title,
-        'is_inverted': answer['is_inverted_str'],
-    }
+    # question.answer = {
+    #     'forecast_type': forecast_type,
+    #     'rune': answer['rune'].title,
+    #     'is_inverted': answer['is_inverted_str'],
+    # }
 
     question.save()
 
     return render(request, 'runes/answer.html', {
-        'answer': answer,
+        'answers': answer,
         'forecast_type': forecast_type
     })
 
@@ -67,12 +67,12 @@ def one_rune_divination_answer(request):
             is_inverted_str = 'Перевернутое положение'
             forecast = translation.forecast_meaning_inverted
 
-    answer = {
+    answer = [{
         'rune': rune,
         'title': translation.title,
         'description': translation.description,
         'is_inverted_str': is_inverted_str,
         'forecast': forecast,
-    }
+    }]
 
     return answer, forecast_type

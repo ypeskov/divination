@@ -10,18 +10,22 @@
 <section class="main-content">
     <article class="divination-article">
         <h2>{{forecast_type}}</h2>
-        <div class="rune-details">
-            <p><b>{% trans "Rune:" %}</b> {{answer.title}}</p>
-            <p><b>{% trans "Position:" %}</b> {% trans answer.is_inverted_str %}</p>
-        </div>
-        <div class="rune-general-description">
-            <h3>{% trans "General Decription of the Rune" %}</h3>
-            <p>{{answer.description|safe}}</p>
-        </div>
-        <div class="rune-forecast">
-            <h3>{% trans "Answer of the Runes" %}</h3>
-            <p>{{answer.forecast|safe}}</p>
-        </div>
+
+        {% for answer in answers %}
+            <div class="rune-details">
+                <p><b>{% trans "Rune:" %}</b> {{answer.title}}</p>
+                <p><b>{% trans "Position:" %}</b> {% trans answer.is_inverted_str %}</p>
+            </div>
+            <div class="rune-general-description">
+                <h3>{% trans "General Decription of the Rune" %}</h3>
+                <p>{{answer.description|safe}}</p>
+            </div>
+            <div class="rune-forecast">
+                <h3>{% trans "Answer of the Runes" %}</h3>
+                <p>{{answer.forecast|safe}}</p>
+            </div>        
+        {% endfor %}
+
     </article>
 </section>
 {% endblock main_content %}

@@ -32,7 +32,7 @@ class Question(models.Model):
     question = models.CharField(max_length=300, null=True, blank=True)
     referer = models.CharField(null=True, max_length=100)
     origin = models.CharField(null=True,max_length=100)
-    answer = models.JSONField()
+    answer = models.JSONField(null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
