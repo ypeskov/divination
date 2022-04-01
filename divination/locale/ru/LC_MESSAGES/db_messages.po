@@ -20,27 +20,6 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: pages/templates/pages/main.html:7
-msgid "Types of forecasts"
-msgstr "Виды гаданий"
-
-#: runes/templates/runes/answer.html:14
-msgid "Rune:"
-msgstr "Руна:"
-
-#: runes/templates/runes/answer.html:15
-msgid "Position:"
-msgstr "Положение:"
-
-#: runes/templates/runes/answer.html:18
-msgid "General Decription of the Rune"
-msgstr "Общее описание руны"
-
-#: runes/templates/runes/answer.html:22
-msgid "Answer of the Runes"
-msgstr "Ответ Рун"
-
-
 msgid "ONE_RUNE_DIVINATION"
 msgstr "Гадание на одной руне"
 
