@@ -8,7 +8,7 @@ from runes.models import Divination, Question, Rune
 from runes.forms import QuestionForm
 
 
-def one_rune_divination_question(request, divination_id):
+def forecast_question(request, divination_id):
     divination = Divination.objects.get(id=divination_id)
 
     form = QuestionForm()
@@ -26,20 +26,18 @@ def divination_answer(request, divination_id):
     origin = request.headers.get('Origin', '')
 
     if divination_id == 1:
-        answer, forecast_type = one_rune_divination_answer(request)
+        answer = provide_rune(1)
+        forecast_type = 'Гадание на одной руне'
     elif divination_id == 2:
-        pass
+        answer = provide_rune(2)
+        forecast_type = 'Гадание на двух рунах'
     elif divination_id == 3:
-        pass
+        answer = provide_rune(3)
+        forecast_type = 'Гадание на трех рунах'
     else:
         raise Http404(_('Forecast not found'))
 
     question = Question(question=question, referer=referer, origin=origin)
-    # question.answer = {
-    #     'forecast_type': forecast_type,
-    #     'rune': answer['rune'].title,
-    #     'is_inverted': answer['is_inverted_str'],
-    # }
 
     question.save()
 
@@ -49,30 +47,36 @@ def divination_answer(request, divination_id):
     })
 
 
-def one_rune_divination_answer(request):
+def provide_rune(number_of_runes):
     random.seed()
     locale = 'ru_ua'
 
-    forecast_type = 'Гадание на одной руне'
-    rune_order = random.randint(1, 24)
-    rune = Rune.objects.get(order=rune_order)
+    # generate all runes orders
+    orders = [o for o in range(1, 25)]
+    random.shuffle(orders)
 
-    translation = rune.runetranslation_set.get(locale=locale)
-    forecast = translation.forecast_meaning_direct
-    is_inverted_str = 'Прямое положение'
-    is_inverted = 0
-    if rune.has_inverted:
-        is_inverted = random.randint(0, 1)
-        if is_inverted == 1:
-            is_inverted_str = 'Перевернутое положение'
-            forecast = translation.forecast_meaning_inverted
+    rune_orders = []
+    while len(rune_orders) < number_of_runes:
+        rune_orders.append(orders.pop())
 
-    answer = [{
-        'rune': rune,
-        'title': translation.title,
-        'description': translation.description,
-        'is_inverted_str': is_inverted_str,
-        'forecast': forecast,
-    }]
+    runes = Rune.objects.filter(order__in=rune_orders)
+    answers = []
+    for rune in runes:
+        translation = rune.runetranslation_set.get(locale=locale)
+        forecast = translation.forecast_meaning_direct
+        is_inverted_str = 'Прямое положение'
+        if rune.has_inverted:
+            is_inverted = random.randint(0, 1)
+            if is_inverted == 1:
+                is_inverted_str = 'Перевернутое положение'
+                forecast = translation.forecast_meaning_inverted
 
-    return answer, forecast_type
+        answers.append({
+            'rune': rune,
+            'title': translation.title,
+            'description': translation.description,
+            'is_inverted_str': is_inverted_str,
+            'forecast': forecast,
+        })
+
+    return answers

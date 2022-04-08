@@ -8,7 +8,7 @@
 
         <ul>
             {% for divination in divinations %}
-            <li><a href="{% url 'runes:forecasts_list' divination_id=divination.order %}">{% trans divination.title %}</a></li>
+            <li><a href="{% url 'runes:forecast_question' divination_id=divination.order %}">{% trans divination.title %}</a></li>
             {% endfor %}
         </ul>
     </h1>
