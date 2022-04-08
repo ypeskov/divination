@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block app_styles %}
+    <link rel="stylesheet" href="{% static 'runes/css/runes.css' %}">
+{% endblock app_styles %}
+
+{% block main_content %}
+<section class="main-content">
+    <article class="divination-article">
+        <h2>{{forecast_type}}</h2>
+
+        {% for answer in answers %}
+            {% if forloop.counter == 1 %}
+                <h3>{% trans 'Past' %}</h3>
+            {% elif forloop.counter == 2 %}
+                <h3>{% trans 'Now' %}</h3>
+            {% elif forloop.counter == 3 %}
+                <h3>{% trans 'Future' %}</h3>
+            {% endif %}
+
+            <div class="rune-details">
+                <p><b>{% trans "Rune:" %}</b> {{answer.title}}</p>
+                <p><b>{% trans "Position:" %}</b> {% trans answer.is_inverted_str %}</p>
+            </div>
+            <div class="rune-general-description">
+                <h3>{% trans "General Decription of the Rune" %}</h3>
+                <p>{{answer.description|safe}}</p>
+            </div>
+            <div class="rune-forecast">
+                <h3>{% trans "Answer of the Runes" %}</h3>
+                <p>{{answer.forecast|safe}}</p>
+            </div>
+
+            {% if forloop.counter != 3 %}<div class="rune-answer-separator"></div>{% endif %}
+        {% endfor %}
+
+    </article>
+</section>
+{% endblock main_content %}

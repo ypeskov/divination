@@ -41,11 +41,23 @@ def divination_answer(request, divination_id):
 
     question.save()
 
-    return render(request, 'runes/answer.html', {
+    template = get_template_name(divination_id)
+    return render(request, template, {
         'answers': answer,
         'forecast_type': forecast_type
     })
 
+
+def get_template_name(divination_id):
+    if divination_id == 1:
+        template = 'runes/1_rune_answer.html'
+    elif divination_id == 2:
+        template = 'runes/2_rune_answer.html'
+    elif divination_id == 3:
+        template = 'runes/3_rune_answer.html'
+    else:
+        raise Http404()
+    return template
 
 def provide_rune(number_of_runes):
     random.seed()

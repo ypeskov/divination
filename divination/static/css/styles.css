@@ -65,3 +65,10 @@ main {
     display: flex;
     align-items: center;
 }
+
+.rune-answer-separator {
+    min-height: 1vh;
+    background-color: #000;
+    border-radius: 5px;
+    margin-top: 2vh;
+}
