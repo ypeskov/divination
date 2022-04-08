@@ -24,21 +24,18 @@ def divination_answer(request, divination_id):
     question = request.POST['question']
     referer = request.headers.get('Referer', '')
     origin = request.headers.get('Origin', '')
+    forecast_type = _(Divination.objects.get(order=divination_id).title)
 
     if divination_id == 1:
         answer = provide_rune(1)
-        forecast_type = 'Гадание на одной руне'
     elif divination_id == 2:
         answer = provide_rune(2)
-        forecast_type = 'Гадание на двух рунах'
     elif divination_id == 3:
         answer = provide_rune(3)
-        forecast_type = 'Гадание на трех рунах'
     else:
         raise Http404(_('Forecast not found'))
 
     question = Question(question=question, referer=referer, origin=origin)
-
     question.save()
 
     template = get_template_name(divination_id)
@@ -58,6 +55,7 @@ def get_template_name(divination_id):
     else:
         raise Http404()
     return template
+
 
 def provide_rune(number_of_runes):
     random.seed()
