@@ -6,6 +6,7 @@ from django.utils.translation import gettext as _
 
 from runes.models import Divination, Question, Rune
 from runes.forms import QuestionForm
+from runes.utils import prepare_for_json
 
 
 def forecast_question(request, divination_id):
@@ -35,7 +36,7 @@ def divination_answer(request, divination_id):
     else:
         raise Http404(_('Forecast not found'))
 
-    question = Question(question=question, referer=referer, origin=origin)
+    question = Question(question=question, referer=referer, origin=origin, answer=prepare_for_json(answer))
     question.save()
 
     template = get_template_name(divination_id)
@@ -65,20 +66,18 @@ def provide_rune(number_of_runes):
     orders = [o for o in range(1, 25)]
     random.shuffle(orders)
 
-    rune_orders = []
-    while len(rune_orders) < number_of_runes:
-        rune_orders.append(orders.pop())
+    selected_runes = orders[:number_of_runes]
+    runes = Rune.objects.filter(order__in=selected_runes)
 
-    runes = Rune.objects.filter(order__in=rune_orders)
     answers = []
     for rune in runes:
         translation = rune.runetranslation_set.get(locale=locale)
         forecast = translation.forecast_meaning_direct
-        is_inverted_str = 'Прямое положение'
+        is_inverted_str = _('Direct position')
         if rune.has_inverted:
             is_inverted = random.randint(0, 1)
             if is_inverted == 1:
-                is_inverted_str = 'Перевернутое положение'
+                is_inverted_str = _('Inverse position')
                 forecast = translation.forecast_meaning_inverted
 
         answers.append({

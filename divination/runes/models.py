@@ -26,7 +26,7 @@ class Rune(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f'{self.id}'
+        return f'{self.title}'
 
 class Question(models.Model):
     question = models.CharField(max_length=300, null=True, blank=True)
